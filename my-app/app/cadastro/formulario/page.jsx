@@ -1,9 +1,9 @@
-'use client'
+"use client";
 import { useRef } from "react";
 import { useState } from "react";
 
 export default function Page(params) {
-     let {lista, setLista} = useState([]); //<- inicia a lista vazia
+  let { lista, setLista } = useState([]); //<- inicia a lista vazia
   let nome = useRef("");
   let tipo = useRef(""); //<- o hook use ref faz a ligação diretamente a um input, entao uma variavel passa a ser um input
 
