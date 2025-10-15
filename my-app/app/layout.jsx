@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import pokemonContext from "./context/pokemonContext";
+import PokemonContext from "./context/pokemonContext";
+import { PokemonProvider } from "./context/pokemonContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,14 +20,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <pokemonContext>
+    <PokemonProvider>
       <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <h1>Layout raiz</h1>
         {children}
       </body>
     </html>
-    </pokemonContext>
+    </PokemonProvider>
     
   );
 }

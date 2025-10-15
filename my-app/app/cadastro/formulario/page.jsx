@@ -1,9 +1,12 @@
 "use client";
-import { useRef } from "react";
+import Link from "next/link";
+import { useContext, useRef } from "react";
 import { useState } from "react";
+import PokemonContext from "../../context/pokemonContext";
 
-export default function Page(params) {
-  let { lista, setLista } = useState([]); //<- inicia a lista vazia
+
+export default function Page() {
+  let { lista, setLista } = useContext(PokemonContext); //Usa o context do pokemon
   let nome = useRef("");
   let tipo = useRef(""); //<- o hook use ref faz a ligação diretamente a um input, entao uma variavel passa a ser um input
 
@@ -15,9 +18,7 @@ export default function Page(params) {
     let nomeV = nome.current.value;
     let tipoV = tipo.current.value;
     if (nomeV != "" && tipoV != "") {
-      setLista([
-        ...lista,
-        {
+      setLista([...lista,{
           //<- Utilizadno o spread operatro a lista antiga recebe a lista nova
           id: Date.now(),
           nome: nomeV,
@@ -54,7 +55,7 @@ export default function Page(params) {
       <div>
         <button onClick={cadastrar}>Gravar</button>
       </div>
-      <a href="/cadastro">exibir</a>
+      <Link href="/cadastro">exibir</Link>
       <br />
       <br />
       <hr />

@@ -1,7 +1,7 @@
 'use client'
 
 import Formulario from "../components/form/formulario";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function Page(){
@@ -22,6 +22,9 @@ export default function Page(){
         setContador(contador + 1);
     }
 
+    useEffect(() =>{
+        setContador(contador + 77777777777777);
+    }, [])//O array vazio nas configs do useEffect serve para que ele não seja chamado infinitamente
     return (
         <div>
             <button onClick={somar}>Clique</button>

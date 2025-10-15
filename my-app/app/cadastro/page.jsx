@@ -1,9 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
+import PokemonContext from "../context/pokemonContext";
+import Link from "next/link";
+import RenderPokemon from "../components/listaPokemon/renderPokemon";
 
 export default function Page() {
- let {lista, setLista} = useState([]); //<- inicia a lista vazia
+ let {lista, setLista} = useContext(PokemonContext); //<- inicia a lista com contexto do pokemon
   
 
   function excluir(id){
@@ -18,16 +21,14 @@ export default function Page() {
         {
             lista.length == 0 ? <p>Nenhum pokemon cadastrado</p> :
             <ul>
-            {lista.map((obj, index) => {
+            {lista.map((value, index) => {
             return (
-                <li key={index}>
-                    {obj.nome} - {obj.tipo}
-                    <span><button onClick={() => excluir(obj.id)}>Excluir</button></span>
-                </li>);
+                  <RenderPokemon excluir={excluir} value={value} index={index}></RenderPokemon>
+                )
             })}
             </ul>
         }
-         <a href="/cadastro/formulario">cadastrar</a>   
+         <Link href="/cadastro/formulario">cadastrar</Link>   
 
         
       </div>

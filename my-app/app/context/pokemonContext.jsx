@@ -3,15 +3,16 @@
 
 const { useContext, useState, createContext } = require("react");
 
+//Cria um contexto
+const PokemonContext = createContext();
 
-const pokemonContext = createContext();
-
-export const pokemonProvider = ({children}) => {
+//Cria um provedor para prover o conteudo do contexto
+export const PokemonProvider = ({children}) => {
     const [lista, setLista] = useState([]);
 
-    return <pokemonContext.Provider value={{lista, setLista}}>
+    return <PokemonContext.Provider value={{lista, setLista}}>
         {children}
-    </pokemonContext.Provider>
+    </PokemonContext.Provider>
 }
 
-export default pokemonContext;
+export default PokemonContext;
