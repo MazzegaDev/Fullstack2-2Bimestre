@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function PageUsuarios() {
-
     //Utilza o useState para mudar o estado da lista
     const [lista, setLista] = useState([]);
 
@@ -13,7 +13,7 @@ export default function PageUsuarios() {
     }, []);
     //Function para buscar de uma url
     async function carregarUsuarios() {
-        //Guarda a resposta do usuari      GET na raiz dos usuarios
+        //Guarda a resposta da requisição      GET na raiz dos usuarios
         let response = await fetch("http://localhost:5000/usuario");
 
         let corpo = await response.json();
@@ -23,23 +23,61 @@ export default function PageUsuarios() {
     }
 
     return (
-        <div>
-            <h1>Pagina de usuarios</h1>
-            <h2></h2>
-            <table>
-                <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
-                </tr>
-                {
-                    lista.map((value, index) => {
+        <div className="container mt-4">
+            <h1 className="mb-4">Página de Usuários</h1>
 
-                       return <tr key={index}>
-                            <td>{value.nome}</td>
-                            <td>{value.email}</td>
-                        </tr>
-                    })
-                }
+            <div className="mb-3">
+                <Link
+                    href="/admin/usuarios/cadastrar"
+                    className="btn btn-success"
+                >
+                    <i className="fas fa-plus me-2"></i>
+                    Novo Usuário
+                </Link>
+            </div>
+
+            <table className="table table-striped table-hover align-middle">
+                <thead className="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Ativo</th>
+                        <th>Perfil</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        lista.map((value, index) => (
+                            <tr key={index}>
+                                <td>{value.id}</td>
+                                <td>{value.nome}</td>
+                                <td>{value.email}</td>
+                                <td>
+                                    <span
+                                        className={`badge ${
+                                            value.ativo == 1
+                                                ? "bg-success"
+                                                : "bg-danger"
+                                        }`}
+                                    >
+                                        {value.ativo == 1 ? "Sim" : "Não"}
+                                    </span>
+                                </td>
+                                <td>{value.perfil.id}</td>
+                                <td>
+                                    <button className="btn btn-primary btn-sm me-2">
+                                        <i className="fas fa-pen"></i>
+                                    </button>
+                                    <button className="btn btn-danger btn-sm">
+                                        <i className="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
             </table>
         </div>
     );

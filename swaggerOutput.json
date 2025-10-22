@@ -11,6 +11,43 @@
     }
   ],
   "paths": {
+    "/perfil/": {
+      "get": {
+        "tags": [
+          "Perfil"
+        ],
+        "summary": "Listar todos os Perfis",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Nenhum usuário encontrado na consulta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/erro"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/erro"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
     "/usuario/": {
       "get": {
         "tags": [
