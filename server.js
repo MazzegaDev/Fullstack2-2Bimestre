@@ -4,11 +4,14 @@ import imovelRouter from './routes/imovelRoute.js';
 import authRouter from './routes/authRoute.js';
 import locacaoRouter from './routes/locacaoRoute.js';
 import swaggerUi from 'swagger-ui-express'
+//Permite o frontend se comunicar com o backend
+import cors from 'cors';
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const outputJson = require("./swaggerOutput.json");
 const server = express();
 
+server.use(cors());
 server.use(express.json());
 
 server.use("/docs", swaggerUi.serve, swaggerUi.setup(outputJson));
