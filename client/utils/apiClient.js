@@ -1,0 +1,110 @@
+import toast from "react-hot-toast";
+
+
+export class ApiClient {
+
+    static instance = null
+    baseUrl = "http://localhost:5000"
+    jwt = "";
+    headers = {
+        "Content-Type": "application/json"
+    }
+
+    constructor() {
+        if(ApiClient.instance != null) {
+            throw new Error("ApiClient já foi instanciado!!!")
+        }
+    }
+
+    static getInstance() {
+        if(ApiClient.instance == null) {
+            ApiClient.instance = new ApiClient();
+        }
+        return ApiClient.instance;
+    }
+
+    static setJwt(jwt) {
+        ApiClient.instance.jwt = jwt;
+    }
+
+    async get(endpoint) {
+        const response = await fetch(this.baseUrl + endpoint, {
+            method: "GET",
+            headers: this.headers
+        })
+
+        return await this.checarResposta(response);
+    }
+
+    async post(endpoint, body) {
+        const response = await fetch(this.baseUrl + endpoint, {
+            method: "POST",
+            headers: this.headers,
+            body: JSON.stringify(body)
+        })
+        //checar respota verifica o que aconteceu com a requisição
+        return await this.checarResposta(response);
+    }
+
+    async put(endpoint, body) {
+        const response = await fetch(this.baseUrl + endpoint, {
+            method: "PUT",
+            headers: this.headers,
+            body: JSON.stringify(body)
+        })
+
+        return await this.checarResposta(response);
+    }
+
+    async delete(endpoint) {
+        const response = await fetch(this.baseUrl + endpoint, {
+            method: "DELETE",
+            headers: this.headers
+        })
+
+        return await this.checarResposta(response);
+    }
+
+    async patch(endpoint, body) {
+        const response = await fetch(this.baseUrl + endpoint, {
+            method: "PATCH",
+            headers: this.headers,
+            body: JSON.stringify(body)
+        })
+
+        return await this.checarResposta(response);
+    }
+
+    async postFormData(endpoint, body) {
+        const response = await fetch(this.baseUrl + endpoint, {
+            method: "POST",
+            body: body
+        })
+
+        return await this.checarResposta(response);
+    }
+
+    async checarResposta(response) {
+        if(response.ok) {
+            //Se a resosta tiver ok, ela esta na faixa dos 200
+            //Então devolvemos a resposta como um json para quem chamou
+            const json = await response.json();
+            return json;
+        }
+        else{
+            //Se  a resposta nao veio com ok, ela nao esta na faixa dos 200
+            let resposta = await response.json();
+            
+            //Mostra o status que veio na resposta
+            console.error(`Erro ao realizar requisição! HTTP Status: ${response.status}`)
+            if(resposta.msg) {
+                toast.error(resposta.msg);
+            }
+            else{
+                toast.error(`Erro ao realizar requisição! HTTP Status: ${response.status}`);
+            }
+        }
+    }
+}
+
+export const apiClient = ApiClient.getInstance();

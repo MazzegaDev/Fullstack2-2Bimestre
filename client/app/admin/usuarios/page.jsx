@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { apiClient } from "@/utils/apiClient";
 
 export default function PageUsuarios() {
     //Utilza o useState para mudar o estado da lista
@@ -14,11 +15,9 @@ export default function PageUsuarios() {
     //Function para buscar de uma url
     async function carregarUsuarios() {
         //Guarda a resposta da requisição      GET na raiz dos usuarios
-        let response = await fetch("http://localhost:5000/usuario");
-
-        let corpo = await response.json();
+        let perfis = await apiClient.get("/usuario");
         //Muda o estado da lista com o corpo da requisição e faz a interface se re-renderizar
-        setLista(corpo);
+        setLista(perfis);
         //console.log(corpo)
     }
 
