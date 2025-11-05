@@ -20,7 +20,7 @@ export default function FormAlterar({params}){
     */
 
     //State que vai guardar o usuario que queremos alterar e enviar como prop pro componente
-    const [encontrado, setEncontrado]= useState(null);
+    const [encontrado, setEncontrado]= useState();
 
     //Utilizando o params para pegar o id da url
     //Usamos chaves porque estamos desestruturando esse objeto que contem o id
@@ -34,7 +34,7 @@ export default function FormAlterar({params}){
     async function buscarUsers() {
         const response = await apiClient.get(`/usuario/${id}`)
         if(response){
-            console.log(response)
+            console.log( response)
             setEncontrado(response);
         }   
     }
@@ -44,7 +44,12 @@ export default function FormAlterar({params}){
     return(
         <div>
             <h1>Alterar</h1>
-            <FormUsuario nome={encontrado}></FormUsuario>
+            {
+                encontrado == null ?
+                <p>Carregando</p> 
+                :
+                <FormUsuario encontrado={encontrado}></FormUsuario>
+            }
         </div>
     )
 
