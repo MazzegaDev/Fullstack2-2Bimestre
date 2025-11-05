@@ -1,11 +1,15 @@
 'use client'
+import { apiClient } from "@/utils/apiClient";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
+import toast, {Toaster} from "react-hot-toast";
 
 export default function FormUsuario() {
     const [lista, setLista] = useState([]);
 
-    
+    const router = useRouter;
+
     useEffect(()=>{
         buscaPerfil();
     }, [])
@@ -16,8 +20,44 @@ export default function FormUsuario() {
         setLista(corpo);
     }
 
+    const nomeR = useRef("");
+    const emailR = useRef("");
+    const senhaR = useRef("");
+    const perfilR = useRef(0);
+    const ativoR = useRef(false);
+
+    async function gravar() {
+        if(!nomeR.current.value && emailR.current.value && senhaR.current.value && perfilR.current.value && ativoR.current.value){
+            //erro
+            return toast.error("Dados invalidos")
+        }
+
+        let obj = {
+            nome: nomeR.current.value,
+            email: emailR.current.value,
+            senha: senhaR.current.value,
+            ativo: ativoR.current.checked,
+            perfil:{
+                id: perfilR.current.value
+            }
+        }
+
+        let response = await apiClient.post("/usuario", obj);
+        if(!response){
+            //erro
+            return toast.error("Erro ao cadastrar usuario.")
+        }
+        
+        toast.success("Usuario cadastrado!")
+        router.replace("/usuarios/admin/")
+
+    }
+
+  
+
     return (
         <div>
+            <Toaster/>
             <div className="form-group">
                 <label>Nome:</label>
                 <input
@@ -25,6 +65,7 @@ export default function FormUsuario() {
                     name="nome"
                     id="nome"
                     className="form-control"
+                    ref={nomeR}
                 />
             </div>
             <div className="form-group">
@@ -34,6 +75,7 @@ export default function FormUsuario() {
                     name="Email"
                     id="Email"
                     className="form-control"
+                    ref={emailR}
                 />
             </div>
             <div className="form-group">
@@ -42,26 +84,27 @@ export default function FormUsuario() {
                     type="password"
                     name="Senha"
                     id="Senha"
+                    ref={senhaR}
                     className="form-control"
                 />
             </div>
             <div className="form-group">
                 <label>Perfil:</label>
-                <select className="form-control">
+                <select ref={perfilR}  className="form-control">
                     <option> --Selecione-- </option>
                     {
                         lista.map((value, index)=>{
-                            return <option key={index} value={value.perfil}>{value.descricao}</option>
+                            return <option key={index} value={value.id}>{value.descricao}</option>
 
                         })
                     }
                 </select>
             </div>
             <div>
-                <label><input type="checkbox"/>Ativo</label>
+                <label><input ref={ativoR} type="checkbox"/>Ativo</label>
             </div>
             <div>
-                <button className="btn btn-primary"><i className="fas fa-check"></i>Gravar</button>
+                <button onClick={gravar} className="btn btn-primary"><i className="fas fa-check"></i>Gravar</button>
                 <Link className="btn btn-secondary" href="/admin/usuarios/">Voltar</Link>
             </div>
         </div>

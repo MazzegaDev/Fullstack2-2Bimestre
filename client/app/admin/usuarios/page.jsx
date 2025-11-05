@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { apiClient } from "@/utils/apiClient";
+import toast from "react-hot-toast";
 
 export default function PageUsuarios() {
     //Utilza o useState para mudar o estado da lista
@@ -19,6 +20,17 @@ export default function PageUsuarios() {
         //Muda o estado da lista com o corpo da requisição e faz a interface se re-renderizar
         setLista(perfis);
         //console.log(corpo)
+    }
+
+    async function excluir(id) {
+        if (confirm("tem certeza que deseja excluir?")) {
+            let response = await apiClient.delete("/usuario/" + id);
+            if (response) {
+                toast.success("excluido");
+                carregarUsuarios();
+            }
+            toast.error(response.msg);
+        }
     }
 
     return (
@@ -47,35 +59,38 @@ export default function PageUsuarios() {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        lista.map((value, index) => (
-                            <tr key={index}>
-                                <td>{value.id}</td>
-                                <td>{value.nome}</td>
-                                <td>{value.email}</td>
-                                <td>
-                                    <span
-                                        className={`badge ${
-                                            value.ativo == 1
-                                                ? "bg-success"
-                                                : "bg-danger"
-                                        }`}
-                                    >
-                                        {value.ativo == 1 ? "Sim" : "Não"}
-                                    </span>
-                                </td>
-                                <td>{value.perfil.id}</td>
-                                <td>
+                    {lista.map((value, index) => (
+                        <tr key={index}>
+                            <td>{value.id}</td>
+                            <td>{value.nome}</td>
+                            <td>{value.email}</td>
+                            <td>
+                                <span
+                                    className={`badge ${
+                                        value.ativo == 1
+                                            ? "bg-success"
+                                            : "bg-danger"
+                                    }`}
+                                >
+                                    {value.ativo == 1 ? "Sim" : "Não"}
+                                </span>
+                            </td>
+                            <td>{value.perfil.id}</td>
+                            <td>
+                                <Link href={`/admin/usuarios/alterar/${value.id}`}>
                                     <button className="btn btn-primary btn-sm me-2">
                                         <i className="fas fa-pen"></i>
                                     </button>
-                                    <button className="btn btn-danger btn-sm">
-                                        <i className="fas fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        ))
-                    }
+                                </Link>
+                                <button
+                                    className="btn btn-danger btn-sm"
+                                    onClick={() => excluir(value.id)}
+                                >
+                                    <i className="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
