@@ -5,15 +5,24 @@ import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import toast, {Toaster} from "react-hot-toast";
 
-export default function FormUsuario() {
+export default function FormUsuario({usuario}) {
     const [lista, setLista] = useState([]);
-
+    // const [usuarioEncontrado, setUsuario] = useState({})
     const router = useRouter;
+
+    /*
+        Como falar para o componente que é um update?
+        1 - passar o id como do usuario como prop
+        2 - verificar se o id veio
+        3 - se veio é put
+        4 - se nao é post
+    */
+
 
     useEffect(()=>{
         buscaPerfil();
+        console.log(usuario);
     }, [])
-
     async function buscaPerfil(){
         const response = await fetch("http://localhost:5000/perfil");
         const corpo = await response.json();
