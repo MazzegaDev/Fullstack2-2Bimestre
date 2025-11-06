@@ -22,6 +22,11 @@ export default class AutenticacaoController {
                     //gerar token;
                     let auth = new AuthMiddleware();
                     let token = auth.gerarToken(usuario.id, usuario.email, usuario.nome, usuario.perfil.id);
+                    //Cria uma cookie na resposta com o token
+                    res.cookie("token", token, {
+                        httpOnly: true
+                    });
+
                     return res.status(200).json({token: token});
                 }
                 else {

@@ -30,6 +30,7 @@ export class ApiClient {
     async get(endpoint) {
         const response = await fetch(this.baseUrl + endpoint, {
             method: "GET",
+            credentials: "include",
             headers: this.headers
         })
 
@@ -40,6 +41,7 @@ export class ApiClient {
         const response = await fetch(this.baseUrl + endpoint, {
             method: "POST",
             headers: this.headers,
+            credentials: "include",
             body: JSON.stringify(body)
         })
         //checar respota verifica o que aconteceu com a requisição
@@ -50,6 +52,7 @@ export class ApiClient {
         const response = await fetch(this.baseUrl + endpoint, {
             method: "PUT",
             headers: this.headers,
+            credentials: "include",
             body: JSON.stringify(body)
         })
 
@@ -59,6 +62,7 @@ export class ApiClient {
     async delete(endpoint) {
         const response = await fetch(this.baseUrl + endpoint, {
             method: "DELETE",
+            credentials: "include",
             headers: this.headers
         })
 
@@ -69,6 +73,7 @@ export class ApiClient {
         const response = await fetch(this.baseUrl + endpoint, {
             method: "PATCH",
             headers: this.headers,
+            credentials: "include",
             body: JSON.stringify(body)
         })
 
@@ -78,6 +83,7 @@ export class ApiClient {
     async postFormData(endpoint, body) {
         const response = await fetch(this.baseUrl + endpoint, {
             method: "POST",
+            credentials: "include",
             body: body
         })
 

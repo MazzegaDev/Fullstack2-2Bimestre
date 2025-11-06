@@ -27,13 +27,7 @@ export default function FormUsuario({ encontrado }) {
         buscaPerfil();
     }, []);
 
-    /*
-        Como falar para o componente que é um update?
-        1 - passar o id como do usuario como prop
-        2 - verificar se o id veio
-        3 - se veio é put
-        4 - se nao é post
-    */
+
     async function alterar() {
         if (
             nomeR.current.value != "" &&
