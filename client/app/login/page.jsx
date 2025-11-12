@@ -15,6 +15,11 @@ export default function PageLogin() {
             let response = await apiClient.post("/autenticacao/token/", obj);
             if(response){
                 console.log(response);
+                if(response.usuario.per_id == 1){
+                    //se for adm redirecionar para interfaces de adm
+                }else{
+                    //redirecionar para interfaces de locatario
+                }
             }
         }else{
             toast.error("Dados invalidos")

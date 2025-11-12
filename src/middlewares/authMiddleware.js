@@ -39,7 +39,7 @@ export default class AuthMiddleware {
                         req.usuarioLogado = usuario;
                         next();
                     } else {
-                        return res.status(401).json({ msg: "Usuário inativo" });
+                        return res.status(401).json({ msg: "Usuário inativo",});
                     }
                 } else {
                     return res

@@ -26,8 +26,8 @@ export default class AutenticacaoController {
                     res.cookie("token", token, {
                         httpOnly: true
                     });
-
-                    return res.status(200).json({token: token});
+                    //envia o objeto usuario junto
+                    return res.status(200).json({token: token, usuario: usuario});
                 }
                 else {
                     return res.status(404).json({msg: "Usuário não encontrado"});
