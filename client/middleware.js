@@ -4,7 +4,8 @@ import { NextResponse } from "next/server";
 export function proxy(request) {
     //se nao achar a token na cookie redireciona para a interface de login 
     if(!request.cookies.get("token")){
-        return NextResponse.redirect()
+        //redireciona para a interface de login
+        return NextResponse.redirect(new URL("/login", request.url));
     }
 }
 
@@ -14,5 +15,5 @@ export function proxy(request) {
 // See "Matching Paths" below to learn more
 export const config = {
     //Proteja a rota de admin e todos seus endpoints 
-    matcher: ["/admin/:path*"],
+    matcher: ["/admin/:path*"]
 };

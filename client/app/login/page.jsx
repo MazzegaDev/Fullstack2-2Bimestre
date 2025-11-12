@@ -1,10 +1,13 @@
 'use client'
 import { apiClient } from "@/utils/apiClient";
+import { useRouter } from "next/router";
 import { useRef } from "react";
 import toast, {Toaster} from "react-hot-toast";
 export default function PageLogin() {
     const email = useRef("");
     const senha = useRef("");
+    const router = useRouter();
+
 
     async function autenticar() {
         if(email.current.value != "" && senha.current.value != ""){
@@ -15,10 +18,12 @@ export default function PageLogin() {
             let response = await apiClient.post("/autenticacao/token/", obj);
             if(response){
                 console.log(response);
-                if(response.usuario.per_id == 1){
+                if(response.usuario.perfil.id == 1){
                     //se for adm redirecionar para interfaces de adm
+                    router.replace("/admin");
                 }else{
                     //redirecionar para interfaces de locatario
+                    router.replace("/locatario");
                 }
             }
         }else{
