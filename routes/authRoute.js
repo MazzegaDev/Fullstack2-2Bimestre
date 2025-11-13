@@ -3,6 +3,9 @@ import AutenticacaoController from '../controllers/autenticacaoController.js';
 
 const router = express.Router();
 
+
+
+
 let ctrl = new AutenticacaoController();
 router.post("/token", (req, res) => {
     // #swagger.tags = ['Autenticação']

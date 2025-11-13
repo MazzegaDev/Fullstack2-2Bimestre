@@ -41,4 +41,13 @@ export default class AutenticacaoController {
         }
     }
 
+    async usuario(req, res){
+        try {
+            
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({msg: "Não foi possivel processar a requisição"})
+        }
+    }
+
 }
