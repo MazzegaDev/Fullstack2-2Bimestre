@@ -41,9 +41,14 @@ export default class AutenticacaoController {
         }
     }
 
+
+    //Devolve as informações do usuario logado
     async usuario(req, res){
         try {
-            
+            if(!req.usuarioLogado){
+                throw new Error ("Erro ao obter usuario.");
+            }
+            return res.status(200).json(req.usuarioLogado)
         } catch (error) {
             console.log(error)
             return res.status(500).json({msg: "Não foi possivel processar a requisição"})
