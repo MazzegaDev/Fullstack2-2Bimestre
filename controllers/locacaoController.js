@@ -54,7 +54,7 @@ export default class LocacaoController {
                             if(await this.#aluguelRepository.gravar(aluguel) == false)
                                 throw new Error(`Erro ao gerar o aluguel do mês ${mes}`);
                      
-                        }
+                         }
 
                         //marcar o imóvel como indisponível
                         imovel.disponivel = "N";
