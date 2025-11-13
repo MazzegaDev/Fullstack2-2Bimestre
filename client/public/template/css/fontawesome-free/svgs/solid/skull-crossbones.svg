@@ -1,0 +1,21 @@
+ </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(StatusOK)">
+            <Source Uri="$(Resources)/StatusOK.xaml" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(StatusPaused)">
+            <Source Uri="$(Resources)/StatusPaused.xaml" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(UACShield)">
+            <Source Uri="$(Resources)/UACShield.xaml" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(StatusWarning)">
+            <Source Uri="$(Resources)/StatusWarning.xaml" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(DarkTheme)">
+            <Source Uri="$(Resources)/DarkTheme.xaml" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(Brightness)">
+            <Source Uri="$(Resources)/Brightness.xaml" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(BulletinIllustrationBuildDefinitionTools)">
+            <Source Uri="$(Resources)/BulletinIllustr

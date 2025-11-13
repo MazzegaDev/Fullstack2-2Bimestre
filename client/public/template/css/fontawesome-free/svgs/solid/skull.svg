@@ -1,0 +1,13 @@
+rk" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(BulletinIllustrationToolsWrench)">
+            <Source Uri="$(Resources)/BulletinIllustrationToolsWrench.png" Background="Light" />
+            <Source Uri="$(Resources)/BulletinIllustrationToolsWrench.png" Background="Dark" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(StatusExcluded)">
+          <Source Uri="$(Resources)/StatusExcluded.xaml" />
+        </Image>
+        <Image Guid="$(SetupImageCatalogGuid)" ID="$(BulletinCopilotPromo)">
+            <Source Uri="$(Resources)/BulletinCopilotPromo.png" Background="Light" />
+            <Source Uri="$(Resources)/BulletinCopilotPromo.png" Background="Dark" />
+        

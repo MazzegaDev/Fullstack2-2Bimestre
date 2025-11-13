@@ -1,0 +1,4 @@
+: Downloading package "Microsoft.NetCore.AppHostPack.9.0.9.0.10.arm64,version=17.14.36602.14,machinearch=x64"
+[0ec4:001b][2025-11-03T19:30:28] Checking SHA256 for path: C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.NetCore.AppHostPack.9.0.9.0.10.arm64.8001F94E51F8CA3E79E1\dotnet-apphost-pack-9.0.10-win-x64_arm64.msi
+[0ec4:001d][2025-11-03T19:30:28] SHA256 verification for 'C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.AspNetCore.TargetingPack.9.0.9.0.10-servicing.25475.17.B6658F0CA864C2209421\aspnetcore-targeting-pack-9.0.10-servicing.25475.17-win-x64.msi' succeeded. Hash: 29866A8D220C6E582F03D990391AFC9F2C74F9C179B62B36E4195B4AB8309195
+[0ec4:001d][2025-11-03T19:30:28] Checking SHA256 for path: C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.AspNetCore.TargetingPack.9.0.9.0.10-servicing.25475.17.B6658F0CA864C2209421\aspnetcore-targ

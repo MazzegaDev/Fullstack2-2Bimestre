@@ -1,0 +1,4 @@
+0:34:01] BEGIN: Downloading package "Microsoft.NetCore.AppHostPack.8.0.8.0.21.x64,version=17.14.36602.14,machinearch=x64"
+[0cb0:001b][2025-10-20T10:34:01] Checking SHA256 for path: C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.NetCore.AppHostPack.8.0.8.0.21.x64.F54A6EDF44F11CAAFCE2\dotnet-apphost-pack-8.0.21-win-x64.msi
+[0cb0:0019][2025-10-20T10:34:01] SHA256 verification for 'C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.NetCore.SharedFramework.9.0.9.0.10.4FF144E23958441D5640\dotnet-runtime-9.0.10-win-x64.msi' succeeded. Hash: 7846F7AD6A726456D74304377CD882CB721AF3AE845844ACB4C00D393870C87F
+[0cb0:0019][2025-10-20T10:34:01] Checking SHA256 for path: C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.NetCore.SharedFramework.9.0.9.

@@ -1,0 +1,638 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API REST - PFS2",
+    "description": "API REST para a construção do backend na disciplina de PFS2",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000/"
+    }
+  ],
+  "paths": {
+    "/usuario/": {
+      "get": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Listar todos os usuários",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Nenhum usuário encontrado na consulta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/erro"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/erro"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Cadastra um novo usuário",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuario"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Altera um usuário existente",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/usuario"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usuario/{id}": {
+      "delete": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Deleta permanentemente um usuário",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "get": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Recupera um usuário através de um ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/imovel/disponivel": {
+      "get": {
+        "tags": [
+          "Imóvel"
+        ],
+        "summary": "Lista todos os imóveis disponíveis para locação",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/imovel/": {
+      "get": {
+        "tags": [
+          "Imóvel"
+        ],
+        "summary": "Lista todos os imóveis cadastrados",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Imóvel"
+        ],
+        "summary": "Cadastra um novo imóvel",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/imovel"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Imóvel"
+        ],
+        "summary": "Altera um imóvel existente",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/imovel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/imovel/{id}": {
+      "get": {
+        "tags": [
+          "Imóvel"
+        ],
+        "summary": "Retorna um imóvel através do id informado",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/imovel/imovel/{id}": {
+      "delete": {
+        "tags": [
+          "Imóvel"
+        ],
+        "summary": "Exclui um imóvel existente através do id informado",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/imovel/imagens/{id}": {
+      "get": {
+        "tags": [
+          "Imóvel"
+        ],
+        "summary": "Lista as imagens de um determinado imóvel",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/autenticacao/token": {
+      "post": {
+        "tags": [
+          "Autenticação"
+        ],
+        "summary": "Gera um token de acesso através das credenciais de um usuário",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "example": "any"
+                  },
+                  "senha": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/locacao/": {
+      "post": {
+        "tags": [
+          "Locação"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "idImovel": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/perfil/": {
+      "get": {
+        "tags": [
+          "Perfil"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "erro": {
+        "type": "object",
+        "properties": {
+          "msg": {
+            "type": "string",
+            "example": "Mensagem de erro"
+          }
+        },
+        "xml": {
+          "name": "erro"
+        }
+      },
+      "usuario": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 999
+          },
+          "nome": {
+            "type": "string",
+            "example": "Fulano de Tal"
+          },
+          "email": {
+            "type": "string",
+            "example": "fulano@unoeste.br"
+          },
+          "senha": {
+            "type": "string",
+            "example": "123abc"
+          },
+          "ativo": {
+            "type": "boolean",
+            "example": true
+          },
+          "perfil": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number",
+                "example": 1
+              }
+            }
+          }
+        },
+        "xml": {
+          "name": "usuario"
+        }
+      },
+      "imovel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 999,
+            "required": false
+          },
+          "descricao": {
+            "type": "string",
+            "required": true
+          },
+          "endereco": {
+            "type": "string",
+            "required": true
+          },
+          "cep": {
+            "type": "string",
+            "required": true
+          },
+          "bairro": {
+            "type": "string",
+            "required": true
+          },
+          "cidade": {
+            "type": "string",
+            "required": true
+          },
+          "valor": {
+            "type": "number",
+            "required": true
+          },
+          "disponivel": {
+            "type": "string",
+            "required": true
+          },
+          "imagens": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "binary"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

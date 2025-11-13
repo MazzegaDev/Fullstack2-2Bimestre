@@ -1,0 +1,6 @@
+594EEC19\payload.vsix
+[23e8:0017][2025-11-04T09:57:58] SHA256 verification for 'C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.VisualStudio.Windows.Build.Resources.9E5FCED011C1594EEC19\payload.vsix' succeeded. Hash: D8BDB68ABB34064ED2F7789BA9DF4C3EAAD082AAD4ED50CDCE2E8E56C2321756
+[23e8:0017][2025-11-04T09:57:58] END: Downloading package "Microsoft.VisualStudio.Windows.Build.Resources,version=17.14.36511.2,language=en-US,productarch=neutral"
+[23e8:0017][2025-11-04T09:57:58] BEGIN: Downloading package "Microsoft.VisualStudio.Windows.Build.Resources,version=17.14.36511.2,language=pt-BR,productarch=neutral"
+[23e8:0017][2025-11-04T09:57:58] Checking SHA256 for path: C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.VisualStudio.Windows.Build.Resources.CAF86D386FF0E82CD0B0\payload.vsix
+[23e8:0017][2025-11-04T09:57:58] SHA256 verification for 'C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.VisualStudio.Windows.Build.Resources.CAF86D386FF0E82CD0B0\payload.vsix' succeeded. Ha

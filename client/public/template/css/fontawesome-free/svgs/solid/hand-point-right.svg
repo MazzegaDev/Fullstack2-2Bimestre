@@ -1,0 +1,17 @@
+                                    </xs:enumeration>
+                                    <xs:enumeration value="Express_All">
+                                      <xs:annotation>
+                                        <xs:documentation>
+                                          <!-- _locID_text="Edition.Express_All" _locComment="" -->This will target all Express products.
+                                        </xs:documentation>
+                                      </xs:annotation>
+                                    </xs:enumeration>
+                                  </xs:restriction>
+                                </xs:simpleType>
+                                <xs:simpleType>
+                                  <xs:restriction base="xs:string"/>
+                                </xs:simpleType>
+                              </xs:union>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>

@@ -1,0 +1,7 @@
+oft.VisualStudio.Interactive.Setup.vsix
+[20d8:001e][2025-10-30T13:47:45] SHA256 verification for 'C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.VisualStudio.Interactive.25030FDFBF8DAA235222\Microsoft.VisualStudio.Interactive.Setup.vsix' succeeded. Hash: E54A71DEAEE4615C6AE5C989F8287B5713EF960FB7F2682A01B17F45D25737E3
+[20d8:001e][2025-10-30T13:47:45] END: Downloading package "Microsoft.VisualStudio.Interactive,version=17.14.0.2551503,productarch=neutral"
+[20d8:001e][2025-10-30T13:47:45] BEGIN: Downloading package "Microsoft.NetCore.SdkPlaceholder.9.0.306-servicing.25476.4,version=17.14.36602.14,machinearch=x64"
+[20d8:001e][2025-10-30T13:47:45] Checking SHA256 for path: C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.NetCore.SdkPlaceholder.9.0.306-servicing.25476.4.CBAB669B6C2D3CBC5369\dotnet-sdkplaceholder-9.0.306-servicing.25476.4-win-x64.msi
+[20d8:001e][2025-10-30T13:47:45] SHA256 verification for 'C:\Users\Aluno\AppData\Local\Temp\winy2shv\Microsoft.NetCore.SdkPlaceholder.9.0.306-servicing.25476.4.CBAB669B6C2D3CBC5369\dotnet-sdkplaceholder-9.0.306-servicing.25476.4-win-x64.msi' succeeded. Hash: 7F9444AE0A7249D1861C1BE6D8789540AECADBBD8B040D5F8CD08B663924A772
+[20d8:001e][2025-10-
